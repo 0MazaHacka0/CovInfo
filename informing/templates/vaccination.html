@@ -36,11 +36,10 @@
             <div class="jumbotron">
                 <h1 class="display-4">Вход</h1>
                 <p class="lead">CovInform - проект по защите и информированию насления об эпидемиологической угрозе</p>
-                <form class="form-group" method="POST" action="/login">
-                    <input name="email" class="form-control" id="email" placeholder="Адрес электронной почты">
-                    <input type="password" name="password" class="form-control" id="passwd" placeholder="Пароль">
-                    <button class="btn btn-primary btn-lg" type="submit">Войти</button>
-                    <a href="/signup" class="btn btn-secondary btn-lg">Зарегистрироваться</a>
+                <form class="form-group" method="POST" action="/vaccination">
+                    <input name="hospital" class="form-control" id="hospital" placeholder="Название поликлиники">
+                    <input name="date" class="form-control" id="date" placeholder="Дата">
+                    <button class="btn btn-primary btn-lg" type="submit">Записаться на вакцинацию</button>
                 </form>
             </div>
         </div>
