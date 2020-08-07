@@ -63,12 +63,16 @@
                     <input name="address" class="form-control" id="address" placeholder="Адрес">
                     {{ form.address.errors }}
 
-                    <input type="email" name="email" class="form-control" id="email"
+                    <input name="email" class="form-control" id="email"
                         placeholder="Адрес электронной почты">
                     {{ form.email.errors }}
 
                     <input name="phone" class="form-control" id="phone" placeholder="Номер телефона" type="number">
                     {{ form.phone.errors }}
+
+                    <small class="form-text text-muted" style="margin-left: 5px;">Регистрируясь на портале вы
+                        соглашаетесь на обработку
+                        персональных данных</small>
 
                     <button class="btn btn-primary btn-lg" type="submit">Зарегистрироваться</button>
                     <a href="{% url 'signup' %}" class="btn btn-secondary btn-lg" type="submit">Войти</a>
