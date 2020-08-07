@@ -32,21 +32,32 @@
                     Вакцинация проводится в два этапа: <b>первая вакцинация проводится по записи на сайте, а
                         ре-вакцинация через пятнадцать дней.</b> Для граждан из возрастной категории <b>60+</b> есть
                     возможность пройти процедуру на дому.</p>
-                <form class="form-group">
-                    <input name="policy_number" type="number" class="form-control" placeholder="Номер полиса ОМС">
-                    <input name="center" class="form-control" placeholder="Медицинский центр">
-                    <input name="date" type="date" class="form-control">
-                    <div class="form-group form-check" style="margin-top: 20px; position: relative;">
-                        <input type="checkbox" class="form-check-input" style="position: absolute; top: -14px">
-                        <label class="form-check-label" style="font-size: 20px;">Возрастная категория 60+</label>
-                    </div>
-                    <div class="form-group form-check" style="margin-top: 20px; position: relative;">
-                        <input type="checkbox" class="form-check-input" style="position: absolute; top: -14px">
-                        <label class="form-check-label" style="font-size: 20px;">У меня отсутствует аллергия на
-                            медицинские препараты</label>
-                    </div>
-                    <button class="btn btn-primary btn-lg" type="submit" style="margin-top: 20px">Записаться</button>
-                </form>
+                <input id="policy_number" name="policy_number" type="number" class="form-control"
+                    placeholder="Номер полиса ОМС">
+                <input id="center" name="center" class="form-control" placeholder="Медицинский центр">
+                <input id="date" name="date" type="date" class="form-control">
+                <div class="form-group form-check" style="margin-top: 20px; position: relative;">
+                    <input type="checkbox" class="form-check-input" style="position: absolute; top: -14px">
+                    <label class="form-check-label" style="font-size: 20px;">Возрастная категория 60+</label>
+                </div>
+                <div class="form-group form-check" style="margin-top: 20px; position: relative;">
+                    <input type="checkbox" class="form-check-input" style="position: absolute; top: -14px">
+                    <label class="form-check-label" style="font-size: 20px;">У меня отсутствует аллергия на
+                        медицинские препараты</label>
+                </div>
+                <button class="btn btn-primary btn-lg" id='appointment_btn' style="margin-top: 20px">Записаться</button>
+            </div>
+        </div>
+
+
+        <div class="row">
+            <div class="col">
+                <div class="alert alert-success fade" id="appointment_alert" role="alert">
+                    Запись прошла успешна!
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
             </div>
         </div>
     </div>
@@ -62,6 +73,34 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
         integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
         crossorigin="anonymous"></script>
+    <script>
+        $('#appointment_btn').click(() => {
+            if ($('#policy_number')[0].value.length != 16) {
+                $('#policy_number').css('border', '3px solid #f00')
+                $('#center').css('border', '')
+                $('#date').css('border', '')
+            } else if ($('#center')[0].value.length < 5) {
+                $('#policy_number').css('border', '')
+                $('#center').css('border', '3px solid #f00')
+                $('#date').css('border', '')
+            } else if (!$('#date')[0].value) {
+                $('#policy_number').css('border', '')
+                $('#center').css('border', '')
+                $('#date').css('border', '3px solid #f00')
+            } else {
+                $('#policy_number').css('border', '3px solid #0a0')
+                $('#center').css('border', '3px solid #0a0')
+                $('#date').css('border', '3px solid #0a0')
+                $('#appointment_alert').removeClass('fade')
+                $('#policy_number')[0].value = ''
+                $('#center')[0].value = ''
+                $('#date')[0].value = ''
+                setTimeout(() => {
+                    location = '/'
+                }, 5000);
+            }
+        })
+    </script>
 </body>
 
 </html>
