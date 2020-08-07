@@ -7,8 +7,21 @@ from .models import Patient
 
 class PatientSignupForm(UserCreationForm):
 
-    name = forms.CharField()
-    surname = forms.CharField()
+    def __init__(self, *args, **kwargs):
+        """
+        Disable password check
+
+        :param args:
+        :param kwargs:
+        """
+        super(UserCreationForm, self).__init__(*args, **kwargs)
+        self.fields['password1'].required = False
+        self.fields['password2'].required = False
+        self.fields['password1'].widget.attrs['autocomplete'] = 'off'
+        self.fields['password2'].widget.attrs['autocomplete'] = 'off'
+
+    first_name = forms.CharField()
+    last_name = forms.CharField()
     passport_number = forms.NumberInput()
     passport_serial = forms.NumberInput()
     address = forms.CharField()
