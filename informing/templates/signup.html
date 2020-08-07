@@ -36,24 +36,42 @@
             <div class="jumbotron">
                 <h1 class="display-4">Регистрация</h1>
                 <p class="lead">CovInform - проект по защите и информированию насления об эпидемиологической угрозе</p>
+
+
+
+
                 <form class="form-group" method="POST" action="/signup" style="position: relative;">
+
+                    {% csrf_token %}
+
                     <input name="name" class="form-control" id="name" placeholder="Имя">
+                    {% for error in form.name.errors %}
+                        <span class="alert">{{ error }}</span>
+                    {% endfor %}
+
                     <input name="surname" class="form-control" id="surname" placeholder="Фамилия">
+                    {{ form.surname.errors }}
 
                     <input style="width: 37%; display: inline-block;" name="passport_number" class="form-control"
                         id="passport_number" placeholder="Серия паспорта" type="number">
+                    {{ form.passport_number.errors }}
+
                     <input style="width: 60%; position: absolute; right: 0; top: 119.6px;" name="passport_serial"
                         class="form-control" id="passport_serial" placeholder="Номер паспорта" type="number">
+                    {{ form.passport_serial.errors }}
 
                     <input name="address" class="form-control" id="address" placeholder="Адрес">
+                    {{ form.address.errors }}
+
                     <input type="email" name="email" class="form-control" id="email"
                         placeholder="Адрес электронной почты">
-                    <input name="phone" class="form-control" id="phone" placeholder="Номер телефона" type="number">
+                    {{ form.email.errors }}
 
+                    <input name="phone" class="form-control" id="phone" placeholder="Номер телефона" type="number">
+                    {{ form.phone.errors }}
 
                     <button class="btn btn-primary btn-lg" type="submit">Зарегистрироваться</button>
-                    <a href="/login" class="btn btn-secondary btn-lg" type="submit">Войти</a>
-
+                    <a href="{% url 'signup' %}" class="btn btn-secondary btn-lg" type="submit">Войти</a>
                 </form>
             </div>
         </div>
