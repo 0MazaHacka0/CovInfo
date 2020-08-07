@@ -13,6 +13,10 @@
     <title>CovInform</title>
 
     <style>
+        * {
+            transition-duration: 100ms;
+        }
+
         .col {
             margin-top: 30px;
         }
@@ -150,13 +154,15 @@
                     </div>
                     <div class="card-body">
                         <div class="form-group">
-                            <input class="form-control form-control-lg" placeholder="Причина записи">
-                            <input type="date" class="form-control form-control-lg"
+                            <input class="form-control form-control-lg" id="appointment_reason"
+                                placeholder="Причина записи">
+                            <input type="date" id="appointment_date" class="form-control form-control-lg"
                                 style="margin-top: 20px; margin-bottom: 20px;">
                             <small class="form-text text-muted">В случае даже незначительного ухудшения
                                 Вашего
                                 самочувствия советуем обращаться за медицинской помощью и оставаться дома</small>
-                            <button class="btn btn-primary btn-lg" style="margin-top: 20px;">Записаться</button>
+                            <button class="btn btn-primary btn-lg" id="appointment_btn"
+                                style="margin-top: 20px;">Записаться</button>
                         </div>
                     </div>
                 </div>
@@ -183,6 +189,17 @@
                         <p class="card-text" style="display: inline-block; margin-left: 50px;">
                             @AtomnijPchelovek<br>@Neprincessa_v_99<br>@KelvonO</p>
                     </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col">
+                <div class="alert alert-success fade" id="appointment_alert" role="alert">
+                    Запись прошла успешна!
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
                 </div>
             </div>
         </div>
@@ -231,6 +248,25 @@
             });
             ymaps.geoQuery(ymaps.geocode('Больницы Звенигород')).addToMap(myMap);
         }
+    </script>
+
+    <script>
+        $('#appointment_btn').click(() => {
+            if ($('#appointment_reason')[0].value.length < 10) {
+                $('#appointment_reason').css('border', '3px solid #f00')
+            }
+            else if (!$('#appointment_date')[0].value) {
+                $('#appointment_reason').css('border', '')
+                $('#appointment_date').css('border', '3px solid #f00')
+            }
+            else {
+                $('#appointment_reason').css('border', '3px solid #0a0')
+                $('#appointment_date').css('border', '3px solid #0a0')
+                $('#appointment_alert').removeClass('fade')
+                $('#appointment_reason')[0].value = ''
+                $('#appointment_date')[0].value = ''
+            }
+        })
     </script>
 </body>
 
