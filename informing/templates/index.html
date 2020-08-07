@@ -13,7 +13,7 @@
     <title>CovInform</title>
 
     <style>
-        .row {
+        .col {
             margin-top: 30px;
         }
 
@@ -31,19 +31,11 @@
     <div class="container" style="position: relative;">
 
         <!-- Header -->
-        <div class="row" style="margin-top: 0;">
-            <div class="col">
+        <div class="row">
+            <div class="col" style="margin-top: 0;">
                 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-                    <a class="navbar-brand" href="#">CovInfo</a>
+                    <a class="navbar-brand" href="#">Добро пожаловать, Иван Иванович</a>
                     <ul class="navbar-nav" style="position: absolute; right: 20px;">
-                        <li class="nav-item">
-                            <a class="nav-link" href="#light-mode">Версия для слабовидящих</a>
-                        </li>
-
-                        <li class="nav-text">
-                            <a class="nav-text">Добро пожаловать, Иван Иванович</a>
-                        </li>
-
                         <li class="nav-item">
                             <a class="nav-link" href="#logout">Выйти</a>
                         </li>
@@ -54,11 +46,16 @@
 
         <!-- Announcement -->
         <div class="row">
-            <div class="col">
-                <p style="color: red;"><b>Всем гражданам</b>
+            <div class="col col-sm-8">
+                <p style="color: red; padding: 10px; background-color: #fdd; border-radius: 5px;"><b>Всем гражданам</b>
                     рекомендовано оставаться дома и
                     вызвать врача на дом при
                     появлении первых признаков заболевания (повышение температуры, головокружение, потеря обоняния).</p>
+            </div>
+            <div class="col col-sm-4">
+                <button class="btn btn-primary btn-lg"
+                    style="width: 100%; height: calc(100% - 18px); font-weight: 600; font-size: 24px;">Версия для
+                    слабовидящих</button>
             </div>
         </div>
 
@@ -110,22 +107,23 @@
                         Последние новости
                     </div>
                     <div class="card-body">
-                        <p class="card-text" style="display: inline-block;"><a
-                                href="https://covid19.rosminzdrav.ru/v-kazahstane-nagradili-rossijskih-vrachej-za-sodejstvie-v-lechenii-paczientov-s-covid-19/">
-                                В Казахстане наградили российских врачей за
-                                содействие в лечении пациентов
-                                с COVID-19</a> <span class="badge badge-info">6 августа
-                                19:32</span>
-                            <a href="https://covid19.rosminzdrav.ru/minzdrav-rossii-utverdil-metodrekomendaczii-po-reabilitaczii-paczientov-posle-covid-19/"
-                                class="card-text" style="display: inline-block;">Минздрав России утвердил
-                                методрекомендации
-                                по реабилитации пациентов после COVID-19</a> <span class="badge badge-info">31 июля
-                                12:34</span>
-                            <a href="https://covid19.rosminzdrav.ru/bashkirskie-vrachi-pomogut-kirgizii-borotsya-s-koronavirusom/"
-                                class="card-text" style="display: inline-block;">Башкирские врачи помогут Киргизии
-                                бороться с
-                                коронавирусом</a> <span class="badge badge-info">23 июля
-                                12:40</span>
+                        <ul>
+                            <li><a href="https://covid19.rosminzdrav.ru/minzdrav-rossii-utverdil-metodrekomendaczii-po-reabilitaczii-paczientov-posle-covid-19/"
+                                    class="card-text" style="display: inline-block;">В Казахстане наградили российских
+                                    врачей за содействие в лечении пациентов с COVID-19</a> <span
+                                    class="badge badge-info">6 августа 19:32</span></li>
+                            <li><a href="https://covid19.rosminzdrav.ru/minzdrav-rossii-utverdil-metodrekomendaczii-po-reabilitaczii-paczientov-posle-covid-19/"
+                                    class="card-text" style="display: inline-block;">Минздрав России утвердил
+                                    методрекомендации
+                                    по реабилитации пациентов после COVID-19</a> <span class="badge badge-info">31 июля
+                                    12:34</span></li>
+                            <li><a href="https://covid19.rosminzdrav.ru/bashkirskie-vrachi-pomogut-kirgizii-borotsya-s-koronavirusom/"
+                                    class="card-text" style="display: inline-block;">Башкирские врачи помогут Киргизии
+                                    бороться с
+                                    коронавирусом</a> <span class="badge badge-info">23 июля
+                                    12:40</span></li>
+
+                        </ul>
                     </div>
                 </div>
             </div>
@@ -143,6 +141,7 @@
             </div>
         </div>
 
+        <!-- Medical info-->
         <div class="row">
             <div class="col">
                 <div class="card">
@@ -152,11 +151,8 @@
                     <div class="card-body">
                         <div class="form-group">
                             <input class="form-control form-control-lg" placeholder="Причина записи">
-                            <input class="form-control form-control-lg" placeholder="Дата" style="margin-top: 20px;">
-                            <div class="form-group form-check" style="margin-top: 10px; position: relative;">
-                                <input type="checkbox" class="form-check-input" style="position: absolute; top: 5px">
-                                <label class="form-check-label" style="font-size: 20px;">Срочно</label>
-                            </div>
+                            <input class="form-control form-control-lg" placeholder="Дата"
+                                style="margin-top: 20px; margin-bottom: 20px;">
                             <small class="form-text text-muted">В случае даже незначительного ухудшения
                                 Вашего
                                 самочувствия советуем обращаться за медицинской помощью и оставаться дома</small>
@@ -177,11 +173,17 @@
                     </div>
                 </div>
 
-                <span style="position: absolute; bottom: 50px; left: 50px; font-size: 20px;">По всем
-                    вопросам обращаться на горячую линию по номеру: <br>
-                    +7 (926) 676-42-80<br>
-                    +7 (800) 555-35-35
-                </span>
+                <div class="card" style="margin-top: 30px;">
+                    <div class="card-header">
+                        Авторы
+                    </div>
+                    <div class="card-body">
+                        <p class="card-text" style="display: inline-block">
+                            @krasnopolsky<br>@NikitaBerezhnov<br>@curious_pingvi</p>
+                        <p class="card-text" style="display: inline-block; margin-left: 50px;">
+                            @AtomnijPchelovek<br>@Neprincessa_v_99<br>@KelvonO</p>
+                    </div>
+                </div>
             </div>
         </div>
 
