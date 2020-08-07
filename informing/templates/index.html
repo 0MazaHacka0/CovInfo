@@ -16,18 +16,24 @@
         .row {
             margin-top: 20px;
         }
+
+        span {
+            margin-right: 20px;
+        }
     </style>
 </head>
 
 <body>
-    <div class="container">
-        <div class="row">
+    <div class="container" style="position: relative;">
+
+        <!-- Header -->
+        <div class="row" style="margin-top: 0;">
             <div class="col">
                 <nav class="navbar navbar-expand-lg navbar-light bg-light">
                     <a class="navbar-brand" href="#">Добро пожаловать, Иван Иванович</a>
                     <ul class="navbar-nav" style="position: absolute; right: 20px;">
                         <li class="nav-item">
-                            <a class="nav-link" href="#light">Версия для слабовидящих</a>
+                            <a class="nav-link" href="#light-mode">Версия для слабовидящих</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="#logout">Выйти</a>
@@ -37,6 +43,7 @@
             </div>
         </div>
 
+        <!-- Statistic -->
         <div class="row">
             <div class="col">
                 <div class="card">
@@ -75,6 +82,8 @@
                 </div>
             </div>
         </div>
+
+        <!-- News -->
         <div class="row">
             <div class="col">
                 <div class="card">
@@ -83,21 +92,40 @@
                     </div>
                     <div class="card-body">
                         <p class="card-text" style="display: inline-block;"><span class="badge badge-info">6 августа
-                                19:32</span> В Казахстане наградили российских врачей за
-                            содействие в лечении пациентов
-                            с COVID-19</p> <a style="display: inline-block; margin-left: 20px;"
-                            href="https://covid19.rosminzdrav.ru/v-kazahstane-nagradili-rossijskih-vrachej-za-sodejstvie-v-lechenii-paczientov-s-covid-19/">Подробнее...</a>
-                        <p class="card-text" style="display: inline-block;"><span class="badge badge-info">31 июля
-                                12:34</span> Минздрав России утвердил методрекомендации
-                            по реабилитации пациентов после COVID-19</p> <a
-                            style="display: inline-block; margin-left: 20px;"
-                            href="https://covid19.rosminzdrav.ru/minzdrav-rossii-utverdil-metodrekomendaczii-po-reabilitaczii-paczientov-posle-covid-19/">Подробнее...</a>
-                        <p class="card-text" style="display: inline-block;"><span class="badge badge-info">23 июля
-                                12:40</span> Башкирские врачи помогут Киргизии бороться с
-                            коронавирусом</p> <a style="display: inline-block; margin-left: 20px;"
-                            href="https://covid19.rosminzdrav.ru/bashkirskie-vrachi-pomogut-kirgizii-borotsya-s-koronavirusom/">Подробнее...</a>
+                                19:32</span><a
+                                href="https://covid19.rosminzdrav.ru/v-kazahstane-nagradili-rossijskih-vrachej-za-sodejstvie-v-lechenii-paczientov-s-covid-19/">
+                                В Казахстане наградили российских врачей за
+                                содействие в лечении пациентов
+                                с COVID-19</a>
+                            <a href="https://covid19.rosminzdrav.ru/minzdrav-rossii-utverdil-metodrekomendaczii-po-reabilitaczii-paczientov-posle-covid-19/"
+                                class="card-text" style="display: inline-block;"><span class="badge badge-info">31 июля
+                                    12:34</span> Минздрав России утвердил методрекомендации
+                                по реабилитации пациентов после COVID-19</a>
+                            <a href="https://covid19.rosminzdrav.ru/bashkirskie-vrachi-pomogut-kirgizii-borotsya-s-koronavirusom/"
+                                class="card-text" style="display: inline-block;"><span class="badge badge-info">23 июля
+                                    12:40</span> Башкирские врачи помогут Киргизии бороться с
+                                коронавирусом</a>
                     </div>
                 </div>
+            </div>
+        </div>
+
+        <!-- Map -->
+        <div class="row">
+            <div class="col">
+                <div class="card">
+                    <div class="card-header">
+                        Ближайший медценттр
+                    </div>
+                    <div class="card-body" id=map style="width: 100%; height: 90vh"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="row" style="width: 100%; position: absolute; bottom: -180px;">
+            <div class="col">
+                <p style="text-align: center;">&copy;LetoCTF 2020</p>
             </div>
         </div>
     </div>
@@ -113,6 +141,17 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
         integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
         crossorigin="anonymous"></script>
+    <script src="https://api-maps.yandex.ru/2.1/?apikey=41e07a0f-bd41-450d-bf82-5a99d8d7bc91&lang=ru_RU"
+        type="text/javascript"></script>
+    <script type="text/javascript">
+        ymaps.ready(init);
+        function init() {
+            var myMap = new ymaps.Map("map", {
+                center: [55.76, 37.64],
+                zoom: 7
+            });
+        }
+    </script>
 </body>
 
 </html>
