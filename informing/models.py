@@ -16,3 +16,11 @@ class Patient(AbstractUser):
 
     def __str__(self):
         return self.email
+
+
+class Hospital(models.Model):
+    name = models.CharField(max_length=50)
+    patient = models.ForeignKey(Patient, on_delete=models.CASCADE)
+    date = models.DateField()
+    notification_date = models.DateField()
+    status = models.CharField(max_length=50)

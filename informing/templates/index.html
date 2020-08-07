@@ -34,7 +34,7 @@
         <div class="row">
             <div class="col" style="margin-top: 0;">
                 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-                    <a class="navbar-brand" href="#">Добро пожаловать, Иван Иванович</a>
+                    <a class="navbar-brand" href="/account">Добро пожаловать, Иванов Иван</a>
                     <ul class="navbar-nav" style="position: absolute; right: 20px;">
                         <li class="nav-item">
                             <a class="nav-link" href="#logout">Выйти</a>
@@ -151,7 +151,7 @@
                     <div class="card-body">
                         <div class="form-group">
                             <input class="form-control form-control-lg" placeholder="Причина записи">
-                            <input class="form-control form-control-lg" placeholder="Дата"
+                            <input type="date" class="form-control form-control-lg"
                                 style="margin-top: 20px; margin-bottom: 20px;">
                             <small class="form-text text-muted">В случае даже незначительного ухудшения
                                 Вашего
@@ -208,13 +208,28 @@
         crossorigin="anonymous"></script>
     <script src="https://api-maps.yandex.ru/2.1/?apikey=41e07a0f-bd41-450d-bf82-5a99d8d7bc91&lang=ru_RU"
         type="text/javascript"></script>
+    <script src="https://api-maps.yandex.ru/2.1/?apikey=41e07a0f-bd41-450d-bf82-5a99d8d7bc91&lang=ru_RU"
+        type="text/javascript">
+        </script>
     <script type="text/javascript">
         ymaps.ready(init);
         function init() {
-            var myMap = new ymaps.Map("map", {
-                center: [55.76, 37.64],
-                zoom: 7
+            var geolocation = ymaps.geolocation,
+                myMap = new ymaps.Map('map', {
+                    center: [55, 34],
+                    zoom: 9
+                }, {
+                    searchControlProvider: 'yandex#search'
+                });
+
+            geolocation.get({
+                provider: 'browser',
+            }).then(function (result) {
+                result.geoObjects.options.set('preset', 'islands#redCircleIcon');
+                myMap.geoObjects.add(result.geoObjects);
+                myMap.setCenter(result.geoObjects.get(0).geometry.getCoordinates(), 9);
             });
+            ymaps.geoQuery(ymaps.geocode('Больницы Звенигород')).addToMap(myMap);
         }
     </script>
 </body>
