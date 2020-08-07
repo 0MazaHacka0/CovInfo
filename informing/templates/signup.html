@@ -50,25 +50,36 @@
                     {% endfor %}
 
                     <input name="last_name" class="form-control" id="surname" placeholder="Фамилия">
-                    {{ form.last_name.errors }}
+                    {% for error in form.last_name.errors %}
+                        <span class="alert">{{ error }}</span>
+                    {% endfor %}
 
                     <input style="width: 37%; display: inline-block;" name="passport_number" class="form-control"
-                        id="passport_number" placeholder="Серия паспорта" type="number">
-                    {{ form.passport_number.errors }}
+                           id="passport_number" placeholder="Серия паспорта" type="number">
+                    {% for error in form.passport_number.errors %}
+                        <span class="alert">{{ error }}</span>
+                    {% endfor %}
 
                     <input style="width: 60%; position: absolute; right: 0; top: 119.6px;" name="passport_serial"
-                        class="form-control" id="passport_serial" placeholder="Номер паспорта" type="number">
-                    {{ form.passport_serial.errors }}
+                           class="form-control" id="passport_serial" placeholder="Номер паспорта" type="number">
+                    {% for error in form.passport_serial.errors %}
+                        <span class="alert">{{ error }}</span>
+                    {% endfor %}
 
                     <input name="address" class="form-control" id="address" placeholder="Адрес">
-                    {{ form.address.errors }}
+                    {% for error in form.address.errors %}
+                        <span class="alert">{{ error }}</span>
+                    {% endfor %}
 
-                    <input name="email" class="form-control" id="email"
-                        placeholder="Адрес электронной почты">
-                    {{ form.email.errors }}
+                    <input name="email" class="form-control" id="email" placeholder="Адрес электронной почты">
+                    {% for error in form.email.errors %}
+                        <span class="alert">{{ error }}</span>
+                    {% endfor %}
 
                     <input name="phone" class="form-control" id="phone" placeholder="Номер телефона" type="number">
-                    {{ form.phone.errors }}
+                    {% for error in form.phone.errors %}
+                        <span class="alert">{{ error }}</span>
+                    {% endfor %}
 
                     <small class="form-text text-muted" style="margin-left: 5px;">Регистрируясь на портале вы
                         соглашаетесь на обработку
