@@ -20,6 +20,10 @@
         span {
             margin-right: 20px;
         }
+
+        .card-text {
+            font-size: 20px !important;
+        }
     </style>
 </head>
 
@@ -118,6 +122,27 @@
                         Ближайший медценттр
                     </div>
                     <div class="card-body" id=map style="width: 100%; height: 90vh"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col">
+                <div class="card">
+                    <div class="card-header">
+                        Заявка на вызов врача
+                    </div>
+                    <div class="card-body">
+                        <div class="form-group">
+                            <input class="form-control form-control-lg" placeholder="Причина вызова">
+                            <div class="form-group form-check" style="margin-top: 10px; position: relative;">
+                                <input type="checkbox" class="form-check-input" style="position: absolute; top: 5px">
+                                <label class="form-check-label" style="font-size: 20px;">Срочно (вызвать скорую
+                                    помощь)</label>
+                            </div>
+                            <button class="btn btn-danger btn-lg">Вызвать</button>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
