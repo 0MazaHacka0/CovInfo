@@ -1,5 +1,6 @@
 from django.contrib.auth.decorators import login_required
-from django.shortcuts import render
+from django.contrib.auth import authenticate
+from django.shortcuts import render, redirect
 from . import forms
 from .models import *
 import datetime
@@ -18,6 +19,13 @@ def account(request):
 # User
 # Login
 def login(request):
+    email = request.POST.get('email')
+    password = request.POST.get('password')
+
+    user = authenticate(username=email, password=password)
+    if user is not None and user.is_active:
+        return redirect('home')
+
     return render(request, 'login.html', {})
 
 
