@@ -1,17 +1,6 @@
-<!doctype html>
-<html lang="en">
+{% extends 'base/base.html' %}
 
-<head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
-        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-
-    <title>Вход</title>
-
+{% block styles %}
     <style>
         .jumbotron {
             width: 60%;
@@ -28,83 +17,57 @@
             margin-top: 20px;
         }
     </style>
-</head>
+{% endblock %}
 
-<body>
-    <div class="container">
-        <div class="row" style="margin-top: 50px;">
-            <div class="jumbotron">
-                <h1 class="display-4">Регистрация</h1>
-                <p class="lead">CovInform - проект по защите и информированию насления об эпидемиологической угрозе</p>
+{% block content %}
+<form class="form-group" method="POST" action="{% url 'signup' %}" style="position: relative;">
 
+    {% csrf_token %}
 
+    <input name="first_name" class="form-control" id="name" placeholder="Имя">
+    {% for error in form.first_name.errors %}
+        <span class="alert">{{ error }}</span>
+    {% endfor %}
 
+    <input name="last_name" class="form-control" id="surname" placeholder="Фамилия">
+    {% for error in form.last_name.errors %}
+        <span class="alert">{{ error }}</span>
+    {% endfor %}
 
-                <form class="form-group" method="POST" action="/signup" style="position: relative;">
+    <input style="width: 37%; display: inline-block;" name="passport_number" class="form-control"
+           id="passport_number" placeholder="Серия паспорта" type="number">
+    {% for error in form.passport_number.errors %}
+        <span class="alert">{{ error }}</span>
+    {% endfor %}
 
-                    {% csrf_token %}
+    <input style="width: 60%; position: absolute; right: 0; top: 119.6px;" name="passport_serial"
+           class="form-control" id="passport_serial" placeholder="Номер паспорта" type="number">
+    {% for error in form.passport_serial.errors %}
+        <span class="alert">{{ error }}</span>
+    {% endfor %}
 
-                    <input name="first_name" class="form-control" id="name" placeholder="Имя">
-                    {% for error in form.first_name.errors %}
-                        <span class="alert">{{ error }}</span>
-                    {% endfor %}
+    <input name="address" class="form-control" id="address" placeholder="Адрес">
+    {% for error in form.address.errors %}
+        <span class="alert">{{ error }}</span>
+    {% endfor %}
 
-                    <input name="last_name" class="form-control" id="surname" placeholder="Фамилия">
-                    {% for error in form.last_name.errors %}
-                        <span class="alert">{{ error }}</span>
-                    {% endfor %}
+    <input name="email" class="form-control" id="email" placeholder="Адрес электронной почты">
+    {% for error in form.email.errors %}
+        <span class="alert">{{ error }}</span>
+    {% endfor %}
 
-                    <input style="width: 37%; display: inline-block;" name="passport_number" class="form-control"
-                           id="passport_number" placeholder="Серия паспорта" type="number">
-                    {% for error in form.passport_number.errors %}
-                        <span class="alert">{{ error }}</span>
-                    {% endfor %}
+    <input name="phone" class="form-control" id="phone" placeholder="Номер телефона" type="number">
+    {% for error in form.phone.errors %}
+        <span class="alert">{{ error }}</span>
+    {% endfor %}
 
-                    <input style="width: 60%; position: absolute; right: 0; top: 119.6px;" name="passport_serial"
-                           class="form-control" id="passport_serial" placeholder="Номер паспорта" type="number">
-                    {% for error in form.passport_serial.errors %}
-                        <span class="alert">{{ error }}</span>
-                    {% endfor %}
+    <small class="form-text text-muted" style="margin-left: 5px;">Регистрируясь на портале вы
+        соглашаетесь на обработку
+        персональных данных</small>
 
-                    <input name="address" class="form-control" id="address" placeholder="Адрес">
-                    {% for error in form.address.errors %}
-                        <span class="alert">{{ error }}</span>
-                    {% endfor %}
+    <button class="btn btn-primary btn-lg" type="submit">Зарегистрироваться</button>
+    <a href="{% url 'login' %}" class="btn btn-secondary btn-lg" type="submit">Войти</a>
 
-                    <input name="email" class="form-control" id="email" placeholder="Адрес электронной почты">
-                    {% for error in form.email.errors %}
-                        <span class="alert">{{ error }}</span>
-                    {% endfor %}
-
-                    <input name="phone" class="form-control" id="phone" placeholder="Номер телефона" type="number">
-                    {% for error in form.phone.errors %}
-                        <span class="alert">{{ error }}</span>
-                    {% endfor %}
-
-                    <small class="form-text text-muted" style="margin-left: 5px;">Регистрируясь на портале вы
-                        соглашаетесь на обработку
-                        персональных данных</small>
-
-                    <button class="btn btn-primary btn-lg" type="submit">Зарегистрироваться</button>
-                    <a href="{% url 'signup' %}" class="btn btn-secondary btn-lg" type="submit">Войти</a>
-
-                    {{ form.non_field_errors }}
-                </form>
-            </div>
-        </div>
-    </div>
-
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
-        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
-        crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
-        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
-        crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
-        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
-        crossorigin="anonymous"></script>
-</body>
-
-</html>
+    {{ form.non_field_errors }}
+</form>
+{% endblock %}
