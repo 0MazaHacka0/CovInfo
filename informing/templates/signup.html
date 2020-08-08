@@ -20,7 +20,7 @@
 {% endblock %}
 
 {% block content %}
-<form class="form-group" method="POST" action="/signup" style="position: relative;">
+<form class="form-group" method="POST" action="{% url 'signup' %}" style="position: relative;">
 
     {% csrf_token %}
 
@@ -66,7 +66,7 @@
         персональных данных</small>
 
     <button class="btn btn-primary btn-lg" type="submit">Зарегистрироваться</button>
-    <a href="{% url 'signup' %}" class="btn btn-secondary btn-lg" type="submit">Войти</a>
+    <a href="{% url 'login' %}" class="btn btn-secondary btn-lg" type="submit">Войти</a>
 
     {{ form.non_field_errors }}
 </form>
