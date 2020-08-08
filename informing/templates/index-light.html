@@ -16,6 +16,10 @@
         .badge {
             margin-left: 20px;
         }
+
+         * {
+             font-size: 40px !important;
+         }
     </style>
 {% endblock %}
 {% block content %}
@@ -28,12 +32,11 @@
                 появлении первых признаков заболевания (повышение температуры, головокружение, потеря обоняния).</p>
         </div>
         <div class="col col-sm-4">
-            <a href="{% url "home-l" %}">
+            <a href="{% url 'home' %}">
             <button class="btn btn-primary btn-lg" id="light-mode-button"
-                    style="width: 100%; height: calc(100% - 18px); font-weight: 600; font-size: 24px;">Версия для
-                слабовидящих
+                    style="width: 100%; height: calc(100% - 18px); font-weight: 600; font-size: 24px;">Обычная версия
             </button>
-                 </a>
+                </a>
         </div>
     </div>
 
@@ -182,12 +185,6 @@
         </div>
     </div>
 
-
-<script>
-    $("#light-mode-button").click(() => {
-        alert(0)
-    })
-</script>
 
     <script>
         $('#appointment_btn').click(() => {
