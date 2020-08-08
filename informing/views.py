@@ -31,6 +31,11 @@ def signup(request):
     return render(request, 'signup.html', {'form': form})
 
 
+# Logout
+def logout(request):
+    return render(request, 'index.html', {})
+
+
 # Vaccination
 @login_required
 def vaccination(request):
