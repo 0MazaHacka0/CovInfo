@@ -1,5 +1,5 @@
 from django.contrib.auth.decorators import login_required
-from django.contrib.auth import authenticate
+from django.contrib.auth import authenticate, logout
 from django.shortcuts import render, redirect
 from . import forms
 from .models import *
@@ -40,7 +40,8 @@ def signup(request):
 
 
 # Logout
-def logout(request):
+def log_out(request):
+    logout(request)
     return render(request, 'index.html', {})
 
 
