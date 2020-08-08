@@ -32,7 +32,8 @@
                     Вакцинация проводится в два этапа: <b>первая вакцинация проводится по записи на сайте, а
                         ре-вакцинация через пятнадцать дней.</b> Для граждан из возрастной категории <b>60+</b> есть
                     возможность пройти процедуру на дому.</p>
-                <form class="form-group">
+                <form class="form-group" method = 'POST' action="/vaccination">
+                    {% csrf_token %}
                     <input name="policy_number" type="number" class="form-control" placeholder="Номер полиса ОМС">
                     <input name="center" class="form-control" placeholder="Медицинский центр">
                     <input name="date" type="date" class="form-control">

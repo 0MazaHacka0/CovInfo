@@ -36,13 +36,8 @@ class PatientSignupForm(UserCreationForm):
 class VaccinationForm(forms.Form):
 
     def __init__(self, *args, **kwargs):
-        """
-        Disable password check
-
-        :param args:
-        :param kwargs:
-        """
         super(VaccinationForm, self).__init__(*args, **kwargs)
 
     hospital = forms.CharField()
     date = forms.DateField()
+    omc = forms.CharField()
