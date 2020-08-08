@@ -1,6 +1,7 @@
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import authenticate
 from django.core.mail import send_mail
+from django.contrib.auth import authenticate, logout
 from django.shortcuts import render, redirect
 import datetime
 
@@ -14,7 +15,7 @@ from .statcovid import *
 
 # Home
 def home(request):
-    do_every_midnight()
+    #do_every_midnight()
     res = get_stats('russia', 'voronezh')
     return render(request, 'index.html',
                   {'f0': res['0'], 'f1': res['1'], 'f2': res['2'], 'f3': res['3'], 'f4': res['4'], 'f5': res['5'],
@@ -55,7 +56,8 @@ def signup(request):
 
 
 # Logout
-def logout(request):
+def log_out(request):
+    logout(request)
     return render(request, 'index.html', {})
 
 
