@@ -4,12 +4,24 @@ from . import forms
 from .models import *
 import datetime
 
+
 # Home
 def home(request):
     return render(request, 'index.html', {})
 
 
+# Account
+def account(request):
+    return render(request, 'account.html', {})
+
+
 # User
+# Login
+def login(request):
+    return render(request, 'login.html', {})
+
+
+# Signup
 def signup(request):
     form = forms.PatientSignupForm(request.POST or None)
 
